@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
+
+{{ partial "head.html" . }}
+	<body>
+{{ partial "header.html" . }}
+		<!-- Subheader & Featured -->
+
+		<div id="subheader">
+			<div id="subheader-inner" class="inner-container page-title">
+				<h2>{{ if .Params.subtitle }}{{ .Params.subtitle }}{{ else }}{{ .Title }}{{ end }}</h2>
+			</div> <!-- #subheader-inner -->
+		</div> <!-- #subheader -->
+
+		<!-- Content -->
+
+		<div id="main-content">
+			<div id="main-content-inner" class="inner-container secondary-inner">
+				<!-- Left Column -->
+				<div id="left-column" class="twothirds">
+					<h2>About {{ .Title }}</h2>
+					{{ .Content }}
+				</div> <!-- #left-column -->
+
+				<!-- Right Column -->
+				<div id="right-column" class="onethird">
+					{{ if .Params.links }}<h2>Links</h2>
+					<ul>
+						{{ range .Params.links }}
+						<li><a href="{{ .url }}" title="{{ .title }}">{{ .title }}</a></li>{{ end }}
+					</ul>{{ end }}
+					{{ if .Params.reviews }}<h2>Reviews</h2>
+					{{ range .Params.reviews }}
+					<p>&quot;{{ .quote }}&quot;<br />
+					<em class="reviewer">-- <a href="{{ .url }}" title="Read the review">{{ .author }}</a></em></p>{{ end }}{{ end }}
+				</div> <!-- #right-column -->
+			</div> <!-- #main-content-inner -->
+		</div> <!-- #main-content -->
+{{ partial "footer.html" . }}
+	</body>
+</html>

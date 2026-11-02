@@ -1,20 +1,8 @@
-FROM starefossen/ruby-node:2-6-alpine
+FROM nginx:alpine
 
-ENV GITHUB_GEM_VERSION 202
-ENV JSON_GEM_VERSION 1.8.6
-
-RUN apk --update add --virtual build_deps \
-    build-base ruby-dev libc-dev linux-headers \
-  && gem install --verbose --no-document \
-    json:${JSON_GEM_VERSION} \
-    github-pages:${GITHUB_GEM_VERSION} \
-    jekyll-github-metadata \
-    minitest \
-  && apk del build_deps \
-  && apk add git \
-  && mkdir -p /usr/src/app \
-  && rm -rf /usr/lib/ruby/gems/*/cache/*.gem
-
-WORKDIR /usr/src/app
-
-CMD jekyll build 
+RUN rm /etc/nginx/conf.d/default.conf
+COPY deploy/hosts /etc/nginx/sites-enabled
+COPY deploy/nginx.conf /etc/nginx/nginx.conf
+COPY deploy/expires.conf /etc/nginx/expires.conf
+ADD public /usr/share/nginx/html
+HEALTHCHECK --interval=60s --timeout=1s --start-period=5s CMD curl --fail --header 'Host: secondbit.org' http://localhost/health || exit 1

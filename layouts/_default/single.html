@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
+
+{{ partial "head.html" . }}
+	<body>
+{{ partial "header.html" . }}
+		<!-- Subheader & Featured -->
+
+		<div id="subheader">
+			<div id="subheader-inner" class="inner-container {{ if .Params.featured }}home-featured{{ else }}page-title{{ end }}">
+				<h2>{{ if .Params.featured }}{{ .Params.featured.title }}{{ else }}{{ if .Params.subtitle }}{{ .Params.subtitle }}{{ else }}{{ .Title }}{{ end }}{{ end }}</h2>{{ if .Params.featured }}
+				<p class="featured-text">{{ .Params.featured.description }}</p>
+
+				<div class="featured-image">
+					<img src="/images/featured/{{ .Params.featured.image }}" alt="{{ .Params.featured.title }}" />
+				</div> <!-- .featured-image -->
+		
+				<a href="{{ index (index .Params.featured.links 0 ) "link" }}" class="featured-btn view-project" title="{{ index (index .Params.featured.links 0 ) "title" }}">{{ index (index .Params.featured.links 0 ) "text" }}</a>
+				<a href="{{ index (index .Params.featured.links 1 ) "link" }}" class="featured-btn" title="{{ index (index .Params.featured.links 1 ) "title" }}">{{ index (index .Params.featured.links 1 ) "text" }}</a>{{ end }}
+			</div> <!-- #subheader-inner -->
+		</div> <!-- #subheader -->
+
+		<!-- Content -->
+
+		<div id="main-content">
+			<div id="main-content-inner" class="inner-container{{ if .Params.sidebar }} secondary-inner{{ end }}">
+				{{ if .Params.sidebar }}<!-- Left Column -->
+				<div id="left-column" class="twothirds">
+					{{ .Content }}
+				</div> <!-- #left-column -->
+
+				<!-- Right Column -->
+				<div id="right-column" class="onethird">
+					{{ .Params.sidebar | .RenderString (dict "display" "block") }}
+				</div> <!-- #right-column -->
+				{{ else }}
+				{{ .Content }}
+				{{ end }}
+			</div> <!-- #main-content-inner -->
+		</div> <!-- #main-content -->
+{{ partial "footer.html" . }}
+	</body>
+</html>

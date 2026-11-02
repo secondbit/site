@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
+
+{{ partial "head.html" . }}
+	<body>
+{{ partial "header.html" . }}
+		<!-- Subheader & Featured -->
+
+		<div id="subheader">
+			<div id="subheader-inner" class="inner-container page-title">
+				<h2>{{ if .Params.left }}Our Old Friend{{ else }}Meet{{ end }} {{ .Params.name.given }} {{ .Params.name.family }}</h2>
+			</div> <!-- #subheader-inner -->
+		</div> <!-- #subheader -->
+
+		<!-- Content -->
+
+		<div id="main-content">
+			<div id="main-content-inner" class="inner-container secondary-inner">
+				<!-- Left Column -->
+				<div id="left-column" class="twothirds">
+					<h2>{{ if .Params.left }}Our Old Friend{{ else }}Introducing{{ end }} {{ .Params.name.given }}</h2>
+					{{ .Content }}
+				</div> <!-- #left-column -->
+
+				<!-- Right Column -->
+				<div id="right-column" class="onethird">
+					<img src="/images/team/sidebar/{{ .Params.slug }}.jpg" title="{{ .Params.name.given }} {{ .Params.name.family }}" class="profile-picture" />
+					<h2>About {{ .Params.name.given }}</h2>
+					<ul>
+						<li><strong>{{ if .Params.left }}Previous {{ end }}Title:</strong> {{ .Params.position }}</li>
+						<li><strong>Joined Second Bit</strong>: {{ .Date | time.Format "January 02, 2006" }}</li>
+						{{ if .Params.left }}<li><strong>Left Second Bit</strong>: {{ .Params.left | time.Format "January 02, 2006" }}</li>{{ end }}
+						<li><strong>Website:</strong> <a href="{{ .Params.website.url }}" title="{{ .Params.website.title }}">{{ .Params.website.url }}</a></li>
+						{{ if not .Params.left }}<li><strong>Email:</strong> <a href="mailto:{{ .Params.email }}" title="Email {{ .Params.name.given }}">{{ .Params.email }}</a></li>{{ end }}
+					  <li><strong>Twitter:</strong> <a href="https://www.twitter.com/{{ .Params.twitter }}" title="Follow {{ .Params.name.given }} {{ .Params.name.family }} on Twitter">@{{ .Params.twitter}}</a></li>
+					</ul>
+				</div> <!-- #right-column -->
+			</div> <!-- #main-content-inner -->
+		</div> <!-- #main-content -->
+{{ partial "footer.html" . }}
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
+
+{{ partial "head.html" . }}
+	<body>
+	<div id="fb-root"></div>
+{{ partial "header.html" . }}
+		<!-- Subheader & Featured -->
+
+		<div id="subheader">
+			<div id="subheader-inner" class="inner-container {{ if .Params.featured }}home-featured{{ else }}page-title{{ end }}">
+				<h2>{{ if .Params.subtitle }}{{ .Params.subtitle }}{{ else }}{{ .Title }}{{ end }}</h2>
+			</div> <!-- #subheader-inner -->
+		</div> <!-- #subheader -->
+
+		<!-- Content -->
+
+		<div id="main-content">
+			<div id="main-content-inner" class="inner-container secondary-inner">
+				<!-- Left Column -->
+				<div id="left-column" class="twothirds">
+					{{ .Content }}
+				</div> <!-- #left-column -->
+
+				<!-- Right Column -->
+				<div id="right-column" class="onethird">
+					<h2>Like the Blog?</h2>
+					<p>Then keep up to speed! We post here when we feel we have something of substance to say (usually). We update our social media accounts more frequently, though. There are lots of ways to keep up to speed:</p>
+					<p><input type="button" onclick="(function(){var z=document.createElement('script');z.src='https://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Subscribe Using RSS" class="subscription-button"></p>
+					<p><a href="https://www.twitter.com/secondbit" title="Second Bit on Twitter" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @secondbit</a></p>
+					<h2>How are we doing?</h2>
+					<p>Like what we post here? Think we should write about something else? Think we should shut up and get back to work? We want to hear your opinions! Feel free to drop by the <a href="/contact" title="Contact us">contact page</a> and use any of those fun ways to get a hold of us.</p>
+				</div> <!-- #right-column -->
+			</div> <!-- #main-content-inner -->
+		</div> <!-- #main-content -->
+	{{ partial "footer.html" . }}
+	</body>
+</html>

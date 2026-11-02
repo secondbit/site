@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
+
+{{ partial "head.html" . }}
+	<body>
+{{ partial "header.html" . }}
+		<!-- Subheader & Featured -->
+
+		<div id="subheader">
+			<div id="subheader-inner" class="inner-container page-title">
+				<h2>{{ .Params.subtitle }}</h2>
+			</div> <!-- #subheader-inner -->
+		</div> <!-- #subheader -->
+
+		<!-- Content -->
+
+		<div id="main-content">
+			<div id="main-content-inner" class="inner-container secondary-inner">
+				<div id="left-column" class="twothirds">
+					{{ if .Params.includeCurrent }}
+					{{ range where .CurrentSection.RegularPages "Params.left" "eq" nil }}
+					<h2 style="clear: both;">
+						<a href="{{ .RelPermalink }}" title="Meet {{ .Params.name.given }} {{ .Params.name.family }}">{{ .Params.name.given }} {{ .Params.name.family }}</a>
+					</h2>
+					<p><img src="/images/team/index/{{ .Params.slug }}.png" style="float: left; padding-right: 10px; padding-bottom: 10px; clear: both;" />{{ .Summary | replaceRE "^<p>" "" | safe.HTML }}
+					{{ end }}
+					{{ end }}
+					{{ if .Params.includeAlums }}
+					{{ range where (where .Site.RegularPages "Section" "eq" "team") "Params.left" "ne" nil }}
+					<h2 style="clear: both;">
+						<a href="{{ .RelPermalink }}" title="Our Old Friend {{ .Params.name.given }} {{ .Params.name.family }}">{{ .Params.name.given }} {{ .Params.name.family }}</a>
+					</h2>
+					<p><img src="/images/team/index/{{ .Params.slug }}.png" style="float: left; padding-right: 10px; padding-bottom: 10px; clear: both;" />{{ .Summary | replaceRE "^<p>" "" | safe.HTML }}
+					{{ end }}
+					{{ end }}
+				</div> <!-- #left-column -->
+
+				<!-- Right Column -->
+				<div id="right-column" class="onethird">
+					{{ if .Params.includeCurrent }}
+					<h2>A sleeping giant</h2>
+					<p>Our team is reduced at the moment, as Second Bit experiences a brief period of slumber. We're working on our products, keeping our heads down, and making things we love. We'll be back in full force soon, and hope to add to this page when we do.</p>
+
+					<h2>Never forget</h2>
+					<p>Just because somebody moved on from Second Bit doesn't mean we love them any less. You can still find the <a href="/alums" title="Second Bit Alumni">profiles of our alums</a>, the people that helped shape Second Bit.</p>
+					{{ else }}
+					<h2>You can never leave.</h2>
+					<p>We have a habit of working with the people that are important to us. People aren't important to us because we work together, we work together because people are important to us. We really enjoy making things with people that we genuinely like.</p>
+
+					<p>Sometimes, though, opportunities come up, adventures rear their heads, and life gets in the way. So we have to stop making things with those people we love, and let them go off on their own. It's always sad to see them go, but we're happy they're following their hearts. And while we may no longer be making things with them, we still love these people dearly.</p>
+
+					<p>This page is for them. The people that helped shape Second Bit, who made it what it is, but sadly are no longer with us. They're not part of the team, but they deserve to be remembered, anyways.</p>
+					{{ end }}
+				</div> <!-- #right-column -->
+			</div> <!-- #main-content-inner -->
+		</div> <!-- #main-content -->
+{{ partial "footer.html" . }}
+	</body>
+</html>

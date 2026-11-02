@@ -1,0 +1,8 @@
+baseurl = "https://secondbit.org"
+pygmentsuseclasses = true
+title = "Second Bit"
+
+disableKinds = ["taxonomy"] 
+
+[permalinks]
+blog = "/blog/:title"

@@ -1,0 +1,19 @@
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+		<title>Second Bit - {{ if .Title }}{{ .Title }}{{ else }}Untapped Potential{{ end }}</title>
+
+		{{ if .Params.repo }}<meta name="go-import" content="secondbit.org{{ .RelPermalink }} git https://github.com/{{ .Params.repo }}">{{ end }}
+
+		<meta property="og:description" content="{{ .Summary }}" />
+		<meta name="Description" content="{{ .Summary }}" />
+
+		<link rel="image_src" href="/images/logo.png" />
+		{{ if .Title }}<meta property="og:title" content="Second Bit{{ if .Title }} - {{ .Title }}{{ end }}" />{{ end }}
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="{{ .Permalink }}" />
+		<meta property="og:image" content="{{ .Site.BaseURL }}{{ if .Params.image }}{{ .Params.image }}{{ else }}images/logo.png{{ end }}" />
+		<link rel="stylesheet" href="/style/main.css" type="text/css" media="screen" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="Second Bit Blog" href="https://secondbit.org/blog/feed.xml" />
+	</head>

@@ -1,0 +1,26 @@
+		<!-- Footer -->
+
+		<div id="footer">
+			<div id="footer-inner" class="inner-container">
+				<div class="twothirds">
+					<h4>A bit about us</h4>
+					<p class="about-footer">Second Bit was founded in the Fall of 2010 with the central guiding goal of "let's make cool stuff". Since then, we've released products that have reached thousands of people and been covered by publications from the niche to the well-known. We believe in open source, freely available software, and work hard to Do The Right Thing.<br />
+					<a href="/about">Learn more</a>.</p>
+				</div> <!-- .twothirds -->
+				<div class="onethird">
+					<h4>Meet the Team</h4>
+
+					{{ range where site.RegularPages "Type" "team" }}
+					{{ if .Params.includeInFooter }}<p class="team-footer">
+  					<img src="/images/team/thumbs/{{ .Params.slug }}.jpg" alt="{{ .Params.name.given }} {{ .Params.name.family }}" />
+						<a style="color: #60727E;" href="{{ .RelPermalink }}" title="{{ .Params.name.given }} {{ .Params.name.family }}'s Profile">{{ .Params.name.given }} {{ .Params.name.family }}</a>
+		  			<span>{{ .Params.position }}</span>
+					</p>
+					{{ end }}
+					{{ end }}
+				</div> <!-- .onethird -->
+				<div id="copyright">
+					<p>Copyright &copy; 2010 Second Bit.</p>
+				</div> <!-- #copyright -->
+			</div> <!-- #footer-inner -->
+		</div> <!-- #footer -->
