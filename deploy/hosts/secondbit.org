@@ -83,3 +83,41 @@ server {
 		return 200 'OK';
 	}
 }
+
+server {
+	listen 80;
+	listen [::]:80;
+
+	server_name blog.secondbit.org;
+
+	location / {
+		expires max;
+		add_header Cache-Control "public";
+		return 301 https://secondbit.org/blog$request_uri;
+	}
+
+	location /health {
+		expires -1;
+		add_header Content-Type text/plain;
+		return 200 'OK';
+	}
+}
+
+server {
+	listen 80;
+	listen [::]:80;
+
+	server_name www.blog.secondbit.org;
+
+	location / {
+		expires max;
+		add_header Cache-Control "public";
+		return 301 https://secondbit.org/blog$request_uri;
+	}
+
+	location /health {
+		expires -1;
+		add_header Content-Type text/plain;
+		return 200 'OK';
+	}
+}
