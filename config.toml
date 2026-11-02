@@ -1,6 +1,7 @@
 baseurl = "https://secondbit.org"
 pygmentsuseclasses = true
 title = "Second Bit"
+publishDir = "public/secondbit.org"
 
 disableKinds = ["taxonomy"] 
 

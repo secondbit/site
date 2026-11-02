@@ -1,0 +1,10 @@
+baseurl = "https://staging.secondbit.org"
+pygmentsuseclasses = true
+title = "Second Bit"
+
+disableKinds = ["taxonomy"] 
+publishDir = "public/staging.secondbit.org"
+buildDrafts = true
+
+[permalinks]
+blog = "/blog/:title"

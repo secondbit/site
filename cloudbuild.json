@@ -13,8 +13,20 @@
 			]
 		},
 		{
+			"name": "us-central1-docker.pkg.dev/${PROJECT_ID}/docker-main/hugo",
+			"args": [
+				"--cleanDestinationDir",
+				"--config", "staging.config.toml",
+				"-d", "/workspace/public/staging.secondbit.org"
+			]
+		},
+		{
 			"name": "bash",
 			"script": "#!/usr/bin/env bash\necho \"Build ${BUILD_ID} from ${SHORT_SHA}\" > /workspace/public/secondbit.org/version.txt"
+		},
+		{
+			"name": "bash",
+			"script": "#!/usr/bin/env bash\necho \"Build ${BUILD_ID} from ${SHORT_SHA}\" > /workspace/public/staging.secondbit.org/version.txt"
 		},
 		{
 			"name": "gcr.io/cloud-builders/docker",
