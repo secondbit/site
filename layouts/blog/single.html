@@ -26,15 +26,23 @@
 
 				<!-- Right Column -->
 				<div id="right-column" class="onethird">
-					<h2>Like the Blog?</h2>
-					<p>Then keep up to speed! We post here when we feel we have something of substance to say (usually). We update our social media accounts more frequently, though. There are lots of ways to keep up to speed:</p>
-					<p><input type="button" onclick="(function(){var z=document.createElement('script');z.src='https://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Subscribe Using RSS" class="subscription-button"></p>
-					<p><a href="https://www.twitter.com/secondbit" title="Second Bit on Twitter" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @secondbit</a></p>
-					<h2>How are we doing?</h2>
-					<p>Like what we post here? Think we should write about something else? Think we should shut up and get back to work? We want to hear your opinions! Feel free to drop by the <a href="/contact" title="Contact us">contact page</a> and use any of those fun ways to get a hold of us.</p>
+					<img src="/images/team/sidebar/{{ .Params.author.slug }}.jpg" title="{{ .Params.author.name }}" class="profile-picture" />
+					<div class="post-header">
+						Posted by <a href="/team/{{ .Params.author.slug }}" title="{{ .Params.author.name }}'s profile">{{ .Params.author.name }}</a> on {{ .Date.Format "Jan 02, 2006" }}
+					</div>
+					<h2>Like the post?</h2>
+					<p><a href="/blog/feed.xml" id="subscribe-link">Subscribe to the blog</a>.</p>
+					<h2>We're listening.</h2>
+					<p>If you have something to say, we want to hear it. You can get in touch via the <a href="/contact" title="Contact us">contact page</a>.</p>
 				</div> <!-- #right-column -->
 			</div> <!-- #main-content-inner -->
 		</div> <!-- #main-content -->
 	{{ partial "footer.html" . }}
+		 <script type="text/javascript">
+			 var subscribeLink = document.getElementById("subscribe-link");
+			 if(subscribeLink) {
+				 subscribeLink.onclick=function(){var z=document.createElement('script');z.src='https://www.subtome.com/load.js';document.body.appendChild(z); return false};
+			 }
+</script>
 	</body>
 </html>
