@@ -21,8 +21,8 @@ server {
 }
 
 server {
-	listen 80 default_server;
-	listen [::]:80 default_server;
+	listen 80;
+	listen [::]:80;
 
 	include /etc/nginx/expires.conf;
 
